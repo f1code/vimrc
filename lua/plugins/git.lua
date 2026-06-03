@@ -25,8 +25,8 @@ return {
 			-- Only one of these is needed.
 			-- "nvim-telescope/telescope.nvim", -- optional
 			-- "ibhagwan/fzf-lua", -- optional
-			"nvim-mini/mini.pick", -- optional
-			-- "folke/snacks.nvim", -- optional
+			-- "nvim-mini/mini.pick", -- optional
+			"folke/snacks.nvim", -- optional
 		},
 		cmd = "Neogit",
 		keys = {

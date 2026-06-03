@@ -25,7 +25,7 @@ vim.opt.undodir = undo_path
 vim.opt.undofile = true
 
 -- Key mappings
-vim.keymap.set("i", "<M-C>", "<C-c>", { desc = "Hyper-C triggers Ctrl-C" , remap = true })
+vim.keymap.set("i", "<M-C-S-D-C>", "<C-c>", { desc = "Hyper-C triggers Ctrl-C" , remap = true })
 vim.keymap.set({ "n", "v", "o" }, "<leader>cf", function()
   vim.fn.setreg("+", vim.fn.expand("%"))
 end, { silent = true, desc = "Copy relative path to clipboard (src/foo.txt)" })
@@ -46,3 +46,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+
+-- Neovide
+if vim.g.neovide then
+  vim.g.neovide_cursor_animation_length = 0
+end

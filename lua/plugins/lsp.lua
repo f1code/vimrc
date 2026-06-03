@@ -5,6 +5,8 @@ return {
 		-- the actual language server executables must be installed separately
 		"neovim/nvim-lspconfig",
 		config = function()
+      -- otherwise lsp.log grows without bounds...
+      vim.lsp.log.set_level "off"
 			-- Python -> ty
 			vim.lsp.enable("ty")
 			vim.lsp.enable("dartls")
@@ -13,7 +15,7 @@ return {
 			vim.lsp.enable("gopls")
 			-- that's the old one
 			-- vim.lsp.enable('ts_ls')
-      -- vs code one - install with npm install -g @vtsls/language-server
+			-- vs code one - install with npm install -g @vtsls/language-server
 			-- vim.lsp.enable('vtsls')
 			vim.lsp.enable("stylua")
 			-- vim.lsp.config('pyrefly', {
@@ -24,20 +26,19 @@ return {
 			--   }
 			-- })
 			-- vim.lsp.enable('pyrefly')
+      -- Documentation, default keybindings:
+      -- https://neovim.io/doc/user/lsp/#_defaults
+      -- to get floating info when jumping
+      vim.diagnostic.config({ jump = { float = true }})
 
 			-- useful keymappings
-			vim.keymap.set("n", "]g", vim.diagnostic.goto_next)
-			vim.keymap.set("n", "[g", vim.diagnostic.goto_prev)
-			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-			vim.keymap.set("n", "<leader>f", function()
-				vim.lsp.buf.format({ async = true })
-			end, {})
+			-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+      -- (note, formatting is done by conform, because some of the languages don't support lsp format)
 			-- also K for showing the definition of the type at cursor (K again to go inside)
 			-- standard mappings: https://neovim.io/doc/user/lsp
 		end,
 	},
-  -- https://github.com/pmizio/typescript-tools.nvim
+	-- https://github.com/pmizio/typescript-tools.nvim
 	{
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
