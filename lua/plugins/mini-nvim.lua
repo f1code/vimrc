@@ -44,6 +44,10 @@ return {
 				go_in = "l",
 				go_out = "-",
 			},
+      options = {
+        -- using snacks explorer instead for that
+        use_as_default_explorer = false
+      }
 		})
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "MiniFilesWindowUpdate",
@@ -59,11 +63,6 @@ return {
 			require("mini.files").open(vim.api.nvim_buf_get_name(0))
 		end, {
 			desc = "Open mini.files (current file)",
-		})
-		vim.keymap.set("n", "<leader>-", function()
-			require("mini.files").open(".")
-		end, {
-			desc = "Open mini.files (current dir)",
 		})
 
 		-- :Git - not using, see git.lua instead
