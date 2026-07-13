@@ -9,12 +9,12 @@ return {
       vim.lsp.log.set_level "off"
 			-- Python -> ty
 			vim.lsp.enable("ty")
-			vim.lsp.enable("dartls")
+			-- vim.lsp.enable("dartls")
 			-- vim.lsp.enable('angularls')
 			-- go install golang.org/x/tools/gopls@latest
 			vim.lsp.enable("gopls")
 			-- that's the old one
-			-- vim.lsp.enable('ts_ls')
+			vim.lsp.enable('ts_ls')
 			-- vs code one - install with npm install -g @vtsls/language-server
 			-- vim.lsp.enable('vtsls')
 			vim.lsp.enable("stylua")
@@ -37,11 +37,5 @@ return {
 			-- also K for showing the definition of the type at cursor (K again to go inside)
 			-- standard mappings: https://neovim.io/doc/user/lsp
 		end,
-	},
-	-- https://github.com/pmizio/typescript-tools.nvim
-	{
-		"pmizio/typescript-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = {},
 	},
 }
