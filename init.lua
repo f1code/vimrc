@@ -39,6 +39,9 @@ vim.keymap.set("n", "<leader>ch", function()
   vim.fn.setreg("*", vim.fn.expand("%:p:h"))
 end, { desc = "Copy directory path to clipboard (/something/src)" })
 
+vim.keymap.set("n", "<leader>zo", "<cmd>tabnew %<cr>", { desc = "Zoom split into a new tab" })
+vim.keymap.set("n", "<leader>zc", "<cmd>tabclose<cr>", { desc = "Unzoom (close tab)" })
+
 -- Autocommands
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight yanked text briefly",
